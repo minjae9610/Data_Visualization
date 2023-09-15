@@ -21,6 +21,17 @@ app.get("/", (req, res) => {
   });
 });
 
+app.get("/data", (req, res) => {
+  fs.readFile("./uploads/chart.json", "utf8", (error, data) => {
+    if (error) {
+      console.log(error);
+    }
+
+    // 문자열 -> JSON
+    return res.json(JSON.parse(data));
+  });
+});
+
 app.post("/data", async (req, res) => {
   try {
     const url = "https://openapi.naver.com/v1/datalab/search";
