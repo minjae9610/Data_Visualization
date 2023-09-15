@@ -52,6 +52,21 @@ app.post("/data", async (req, res) => {
       headers,
     });
 
+    // 값을 파일로 저장
+    // json은 바로 저장 X -> json을 문자열로 변환해서 저장
+    // JSON -> String JSON.stringify()
+
+    fs.writeFile(
+      "./uploads/chart.json",
+      JSON.stringify(response.data.results),
+      (err) => {
+        if (err) {
+          console.log(err);
+        }
+        console.log("파일이 생성되었습니다.");
+      }
+    );
+
     return res.json(response.data);
   } catch (error) {
     console.log(error);
