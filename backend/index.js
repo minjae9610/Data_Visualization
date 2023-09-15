@@ -42,21 +42,17 @@ app.post("/data", async (req, res) => {
       "Content-Type": "application/json",
     };
 
+    console.log(req.body);
+
     // axios에 보낼 body
     const request_body = {
-      startDate: "2017-01-01",
-      endDate: "2017-04-30",
-      timeUnit: "month",
-      keywordGroups: [
-        {
-          groupName: "한글",
-          keywords: ["한글", "korean"],
-        },
-        {
-          groupName: "영어",
-          keywords: ["영어", "english"],
-        },
-      ],
+      // startDate: "2017-01-01",
+      startDate: req.body.startDate,
+      // endDate: "2017-04-30",
+      endDate: req.body.endDate,
+      // timeUnit: "month",
+      timeUnit: req.body.timeUnit,
+      keywordGroups: req.body.keywordGroups,
     };
 
     const response = await axios.post(url, request_body, {
