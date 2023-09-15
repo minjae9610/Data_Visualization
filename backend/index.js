@@ -42,8 +42,6 @@ app.post("/data", async (req, res) => {
       "Content-Type": "application/json",
     };
 
-    console.log(req.body);
-
     // axios에 보낼 body
     const request_body = {
       // startDate: "2017-01-01",
